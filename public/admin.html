@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/icono.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&display=swap">
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-image: url(img/admin.jpg);
+      }
+
+      #gameForm {
+        border: 2px solid #fff;
+        padding: 40px;
+        width: 400px;
+        border-radius: 20px;
+        background-color: #fff; /* Fondo blanco */
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra suave */
+      }
+
+      #gameForm h2 {
+        font-family: "Chakra Petch", sans-serif;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #ff7f00;
+      }
+
+      #gameForm label {
+        display: block;
+        margin-bottom: 10px;
+        color: #333; /* Texto oscuro */
+      }
+
+      #gameForm label input[type="checkbox"] {
+        display: none;
+      }
+
+      #gameForm label input[type="checkbox"] + span {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        margin-right: 10px;
+        border: 2px solid #ffad33; /* Borde naranja */
+        border-radius: 3px;
+        cursor: pointer;
+        vertical-align: middle;
+        transition: background-color 0.3s ease; /* Transición suave */
+      }
+
+      #gameForm label input[type="checkbox"]:checked + span {
+        background-color: #ffad33; /* Fondo naranja cuando está seleccionado */
+      }
+
+      #gameForm select,
+      #gameForm input[type="text"],
+      #gameForm button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #ffad33; /* Botón y campos de texto naranjas */
+        color: #fff; /* Texto blanco */
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Transición suave */
+      }
+
+      #gameForm button:hover {
+        background-color: #ff7f00; /* Naranja más oscuro al pasar el cursor */
+      }
+
+      #gameForm button:active {
+        transform: scale(0.95); /* Reducción de escala al hacer clic */
+      }
+
+      #gameForm button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+      #boton-atras {
+        margin-bottom: 40%;
+      }
+      #go-back {
+        background-color: #ffad33;
+        color: white;
+        padding: 15px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      #go-back:hover {
+        background-color: #ff7f00;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="gameForm">
+      <h2>Nueva Partida</h2>
+      <form id="adminForm">
+          <label for="title">Título:</label>
+          <input type="text" id="title" name="title" required>
+  <br><br>
+          <label for="quantity">Preguntas:</label>
+          <input type="range" id="quantity" name="quantity" min="5" max="20" value="10">
+          <span id="selectedQuantity">10</span> 
+          <br>
+  
+          <br><label for="time">Tiempo para cada pregunta:</label>
+  <input type="range" id="time" name="time" min="5" max="20" value="10">
+  <span id="selectedTime">10</span> 
+  <br><br>
+          <label>Temas:</label>
+          <label><input type="checkbox" name="topic" value="paises"> <span></span> Paises</label>
+          <label><input type="checkbox" name="topic" value="quimica"><span></span>  Química</label>
+          <label><input type="checkbox" name="topic" value="astronomia"><span></span> Astronomia</label>
+  
+          <button type="submit" id="submitButton">Crear Partida</button>      </form>
+          </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+      var timeInput = document.getElementById('time');
+      var selectedTimeSpan = document.getElementById('selectedTime');
+  
+      var quantityInput = document.getElementById('quantity');
+      var selectedQuantitySpan = document.getElementById('selectedQuantity');
+  
+      var submitButton = document.getElementById('submitButton');
+  
+      timeInput.addEventListener('input', function() {
+          selectedTimeSpan.textContent = timeInput.value;
+      });
+  
+      quantityInput.addEventListener('input', function() {
+          selectedQuantitySpan.textContent = quantityInput.value;
+      });
+  
+      // Deshabilitar el botón de envío al cargar la página
+      submitButton.disabled = true;
+  
+      // Verificar si al menos un checkbox está marcado
+      var checkboxes = document.querySelectorAll('input[type="checkbox"][name="topic"]');
+      checkboxes.forEach(function(checkbox) {
+          checkbox.addEventListener('change', function() {
+              var atLeastOneChecked = Array.from(checkboxes).some(function(checkbox) {
+                  return checkbox.checked;
+              });
+              submitButton.disabled = !atLeastOneChecked;
+          });
+      });
+    </script>
+  </body>
+</html>

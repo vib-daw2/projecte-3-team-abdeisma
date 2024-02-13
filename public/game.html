@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORANGE GAME</title>
+    <link rel="icon" type="image/x-icon" href="img/icono.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.min.js"></script>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffecd9; /* Light orange background */
+            color: #333; /* Dark gray text */
+            background-image: url(img/game.png);
+        }
+
+        /* Contenedor global */
+        #global {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Contenedor principal */
+        #container {
+            max-width: 600px;
+            margin: 20px;
+            padding: 40px;
+            border-radius: 15px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: box-shadow 0.3s;
+        }
+
+        /* Títulos */
+        h1, h2, h3 {
+            color: #ff6600; /* Orange title */
+            margin-bottom: 20px;
+        }
+
+        h1 { font-size: 36px; }
+        h2 { font-size: 24px; }
+        h3 { font-size: 18px; }
+
+        /* Botones de respuesta */
+        .answer-btn {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+            width: 100%;
+        }
+
+        #respuesta-a {
+            background-color: #e21b3c;
+        }
+
+        #respuesta-b {
+            background-color: #1268cd;
+        }
+
+        #respuesta-c {
+            background-color: #d89e00;
+        }
+
+        #respuesta-d {
+            background-color: #2a8f0d;
+        }
+
+        #respuesta-a.clicked,
+        #respuesta-b.clicked,
+        #respuesta-c.clicked,
+        #respuesta-d.clicked {
+            background-color: blue; 
+            color: white; 
+            cursor: not-allowed;
+        }
+
+        #respuesta-a.disabled,
+        #respuesta-b.disabled,
+        #respuesta-c.disabled,
+        #respuesta-d.disabled {
+            background-color: gray; 
+            cursor: not-allowed;
+        }
+
+        .answer-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Estilos para la tabla de usuarios */
+        #user-table-container { margin-top: 20px; }
+
+        #user-table th, #user-table td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        #user-table th {
+            font-weight: bold;
+            background-color: #ff6600; /* Orange header */
+            color: #fff; /* White text */
+        }
+
+        #user-table tbody tr:nth-child(even) { background-color: #fff; } /* White background for even rows */
+
+        #user-table tbody tr:hover { background-color: #ffebcc; } /* Light orange background on hover */
+    
+
+        /* Estilo para el contador de tiempo */
+        #countdown-circle {
+            width: 100px;
+            height: 100px;
+            background-color: #ff6600;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: white;
+            margin: 20px auto;
+        }
+
+        #second-countdown {
+            font-size: 24px;
+            color: #fff;
+            background-color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            }
+
+/* Estilos para el botón "Volver a Jugar" */
+.botonVolverAJugar-jugar-btn {
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 50px;
+    transition: background-color 0.3s, transform 0.2s;
+    background-color: #ff6600; /* Color naranja */
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: inline-block; /* Hace que el botón se muestre en línea */
+}
+
+.botonVolverAJugar-jugar-btn:hover {
+    background-color: #ff9900; /* Cambia el color al naranja más claro al pasar el cursor */
+    transform: translateY(-2px);
+}
+
+/* Animación de entrada para el botón "Volver a Jugar" */
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.botonVolverAJugar-jugar-btn {
+    animation: slideIn 0.5s ease forwards;
+}
+
+/* Estilos para el podio y el ranking */
+#podio-rank-container {
+    margin-top: 40px;
+    text-align: center;
+    animation: fadeIn 0.5s ease forwards; /* Animación de entrada */
+}
+
+/* Estilos para el podio y el ranking */
+#podio-ranking {
+    margin-bottom: 20px;
+    background-color: #fff; /* Color de fondo para las filas impares */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra */
+    display: inline-block;
+    max-width: 400px; /* Limita el ancho del podio para que no ocupe demasiado espacio */
+    margin: 0 auto; /* Centra el podio horizontalmente */
+    animation: fadeIn 0.5s ease forwards; /* Animación de entrada */
+}
+
+#podio-ranking h3 {
+    color: #ff6600; /* Color naranja para el título */
+    font-size: 28px; /* Tamaño de fuente más grande */
+    margin-bottom: 15px; /* Añade un espacio inferior para separar el título de los datos */
+}
+
+#podio-ranking div {
+    font-size: 20px; /* Tamaño de fuente más grande */
+    margin-bottom: 15px; /* Espaciado inferior entre elementos */
+    padding: 15px; /* Añade relleno para separar visualmente las filas */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Color de fondo ligeramente más claro */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    animation: fadeIn 0.5s ease forwards; /* Animación de entrada */
+}
+
+/* Estilo para el primer lugar */
+#podio-ranking div:nth-child(1) {
+    background-color: #ffd700; /* Color dorado para el primer lugar */
+    font-weight: bold;
+}
+/* Animación de entrada para los elementos del podio */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.botonVolverAJugar-jugar-btn {
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 50px;
+    transition: background-color 0.3s, transform 0.2s;
+        }
+
+.botonVolverAJugar-jugar-btn:hover {
+    background-color: #ff6600;
+    color: white;
+    transform: translateY(-2px);
+        }        
+    </style>
+</head>
+<body>
+<div id="global">
+    <div id="container">
+        <h1>ORANGE GAME</h1>
+
+        <div id="question">
+            <h2 id="pregunta"></h2>
+        </div>
+
+        <div id="buttons-container" style="display: none;">
+            <div class="row">
+                <div class="col-6">
+                    <button id="respuesta-a" class="answer-btn" onclick="handleButtonClick('a')"></button>
+                </div>
+                <div class="col-6">
+                    <button id="respuesta-b" class="answer-btn" onclick="handleButtonClick('b')"></button>
+                </div>
+                <div class="col-6">
+                    <button id="respuesta-c" class="answer-btn" onclick="handleButtonClick('c')"></button>
+                </div>
+                <div class="col-6">
+                    <button id="respuesta-d" class="answer-btn" onclick="handleButtonClick('d')"></button>
+                </div>
+            </div>
+        </div>
+
+        <div id="countdown-container" style="display: none;">
+            <div id="countdown-circle">
+                <div id="countdown"></div>
+            </div>
+        </div>
+
+        <div id="right-answer" style="display: none;">
+            <h3>La respuesta correcta es: <span id="right-answer-text">Washington D.C</span></h3>
+        </div>
+
+        <div id="chart-container" style="display: none;">
+            <canvas id="myChart"></canvas>
+            <div id="user-table-container">
+                <table id="user-table" class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Puntos</th>
+                            <th>Username</th>
+                            <th>Aciertos</th>
+                            <th>Fallos</th>
+                            <th>%</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="podio-rank-container" >
+    
+        <!-- Aquí se mostrará el podio y el ranking -->
+        <div id="podio-ranking" style="display: none;">        
+            <h2 style="display: none;">Podio y Ranking de Puntuaciones</h2>
+        </div>
+    </div>    
+
+    <button id="botonVolverAJugar" class="botonVolverAJugar-jugar-btn" style="display: none;"> ¿Otra mas?</button>
+
+    <div id="second-countdown-container" style="display: none;">
+            <div id="second-countdown"  ></div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.min.js"></script>
+<script src="main.js"></script>
+<script>
+
+// Función que cambia la visibilidad de un elemento, los parámetros son el elemento y un booleano, con true mostramos el elemento y con false lo ocultamos
+function toggleElementVisibility(element, show) {
+        if (show) {
+            element.style.display = 'block';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+
+// Función que cambia la visibilidad de un botón, los parámetros son el elemento y un booleano, con true mostramos el botón y con false lo ocultamos
+function toggleButtonsVisibility(element, show) {
+        if (show) {
+            element.style.display = 'flex';
+        } else {
+            element.style.display = 'none';
+        }
+    }
+
+// Función que ejecuta todas las modificaciones de estilos de los elementos HTML al finalizar el tiempo de espera para la siguiente pregunta
+function showAndHideDuringFirstCountDown() {
+        toggleButtonsVisibility(document.getElementById('buttons-container'), true); // Muestra el contenedor de los botones de las respuestas
+        toggleElementVisibility(document.getElementById('countdown-container'), true); // Muestra el contenedor del contador de tiempo
+
+    }
+
+// Función que ejecuta todas las modificaciones de estilos de los elementos HTML al finalizar la partida
+function showAndHideAfterFirstCountDown() {
+        toggleButtonsVisibility(document.getElementById('buttons-container'), false); // Oculta el contenedor de los botones de las respuestas
+        toggleElementVisibility(document.getElementById('right-answer'), true); // Muestra la respuesta correcta
+        toggleElementVisibility(document.getElementById('chart-container'), true); // Muestra el gráfico con las respuestas seleccionadas
+        toggleElementVisibility(document.getElementById('countdown-container'), false); // Oculta el contenedor del contador de tiempo
+
+    }
+
+// Función para mostrar el podio y el ranking de las puntuaciones al finalizar la partida
+function showAndHideAfterSecondCountDown() {
+        toggleElementVisibility(document.getElementById('right-answer'), false); // Oculta la respuesta correcta
+        toggleElementVisibility(document.getElementById('chart-container'), false); // Oculta el contenedor del gráfico con las respuestas seleccionadas
+        toggleElementVisibility(document.getElementById('second-countdown'), false); // Oculta el contenedor del segundo contador
+    }
+
+// Función que ejecuta todas las modificaciones de estilos de los elementos HTML al finalizar la partida
+function showAndHideAtTheEnd() {
+    toggleElementVisibility(document.getElementById('right-answer'), false); // Oculta la respuesta correcta
+    toggleElementVisibility(document.getElementById('chart-container'), false); // Oculta el chart de las respuestas escogidas
+    toggleElementVisibility(document.getElementById('countdown-container'), false); // Oculta el container del CD
+    toggleElementVisibility(document.getElementById('second-countdown'), false); // Oculta el segundo CD
+    toggleElementVisibility(document.getElementById('question'), false); // Oculta la pregunta
+    // Mostrar las puntuaciones
+    mostrarPuntuaciones();
+}
+
+// Función para mostrar el podio y el ranking de las puntuaciones al finalizar la partida
+function mostrarPuntuaciones() {
+    // Ocultar el contenedor principal
+    document.getElementById("container").style.display = "none";
+    // Obtener el contenedor de puntuaciones
+    const podioContainer = document.getElementById("podio-ranking");
+    // Limpiar el contenido previo
+    podioContainer.innerHTML = "";
+
+    // Llamar a la función obtenerPuntuaciones() y obtener los datos
+    const { labelsPodio, dataPodio, labelsRanking, dataRanking } = obtenerPuntuaciones();
+
+    // Si hay al menos 3 usuarios temporales, mostrar el podio y el ranking
+    if (labelsPodio.length >= 3) {
+        // Crear elemento HTML para el podio
+        const podioTitle = document.createElement("h3");
+        podioTitle.textContent = "PODIO";
+        podioContainer.appendChild(podioTitle);
+        for (let i = 0; i < labelsPodio.length; i++) {
+            const puntuacion = document.createElement("div");
+            puntuacion.textContent = `${i + 1}- ${labelsPodio[i]}: ${dataPodio[i]}`; // Agregar número de posición
+            podioContainer.appendChild(puntuacion);
+        }
+
+        // Crear elemento HTML para el ranking
+        const rankingTitle = document.createElement("h3");
+        rankingTitle.textContent = "RANKING";
+        podioContainer.appendChild(rankingTitle);
+        for (let i = 0; i < labelsRanking.length; i++) {
+            const puntuacion = document.createElement("div");
+            puntuacion.textContent = `${i + 4}- ${labelsRanking[i]}: ${dataRanking[i]}`; // Agregar número de posición
+            podioContainer.appendChild(puntuacion);
+        }
+
+        // Mostrar el contenedor del podio y el ranking
+        toggleElementVisibility(podioContainer, true);
+    } else {
+        // Si no hay suficientes usuarios en la partida, mostrar un mensaje de advertencia
+        podioContainer.textContent = "No hay suficientes usuarios para mostrar el podio";
+        toggleElementVisibility(podioContainer, true);
+    }
+}
+
+// Función que habilita todos los botones
+function enableAllButtons() {
+        const buttons = document.querySelectorAll('.answer-btn');
+        buttons.forEach(button => {
+            button.disabled = false;
+        });
+    }
+
+// Función que deshabilita los botones
+function disableAllButtons() {
+        const buttons = document.querySelectorAll('.answer-btn');
+        buttons.forEach(button => {
+            button.disabled = true;
+        });
+    }
+
+// Función para eliminar estilos de los botones clicados
+function removeClickedStyles() {
+        const buttons = document.querySelectorAll('.answer-btn');
+        buttons.forEach(button => {
+            button.classList.remove('clicked');
+            button.classList.remove('disabled');
+            button.style.backgroundColor = ''; // Restablece el color de fondo
+            button.style.color = ''; // Restablece el color del texto
+            button.style.cursor = ''; // Restablece el cursor
+        });
+    }
+
+
+    
+</script>
+</body>
+</html>
