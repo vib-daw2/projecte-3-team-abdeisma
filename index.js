@@ -27,7 +27,6 @@ var clickCounts = [0, 0, 0, 0];
 //guardar registre de les partidas creades
 const partidas = {};
 
-
 io.on("connection", (socket) => {
   console.log("Cliente conectado...");
 
@@ -69,7 +68,7 @@ io.on("connection", (socket) => {
       const preguntasPorTema = {};
       // Agrupar las preguntas según el tema seleccionado
       preguntas.forEach((pregunta) => {
-          const tema = pregunta.modalitat.toLowerCase();
+          const tema = pregunta.modalidad.toLowerCase();
           if (topics.includes(tema)) {
               preguntasPorTema[tema] = preguntasPorTema[tema] || [];
               preguntasPorTema[tema].push(pregunta);
@@ -241,7 +240,7 @@ socket.on("users started", function(data) {
     setTimeout(() => {
       // Emitir "game started" para que empiece la siguiente
       socket.emit("time finished", { time, roomId });
-  }, 7000);
+  }, 5000);
 });
 
   // Recibir respuestas, verificar el resultado y actualizar el objeto "userScores"
@@ -262,12 +261,10 @@ socket.on("users started", function(data) {
 
     // Crear puntuación para el usuario si aún no la tiene
     if (!userScores[nicknameUser]) {
-    userScores[nicknameUser] = {puntuacion: 0,correctas: 0,incorrectas: 0,
-    };
+    userScores[nicknameUser] = {puntuacion: 0,correctas: 0,incorrectas: 0 };
   }
-
     // Respuesta del usuario y respuesta correcta
-    const respuestaUsuario = preguntaObj.respuestasGame[buttonIndex];
+    const respuestaUsuario = preguntaObj.respuestaGame[buttonIndex];
     const respuestaCorrecta = preguntaObj.correcta;
 
     // Calcular la puntuación basada en el tiempo restante
@@ -302,7 +299,6 @@ socket.on("users started", function(data) {
   clickCounts = [0, 0, 0, 0];
 });
 
-
   // Manejar la desconexión de los usuarios
 socket.on('disconnect', function() {
   console.log("¡Desconectado!");
@@ -334,12 +330,10 @@ usersArray[0].usernamesArray.forEach((username) => {
   socket.on("restart scores", function(data) {
   const { nicknameAdmin, idRoom, usersArray } = data;
  
- 
-  const userList = usersArray[0].usersArray;
+   const userList = usersArray[0].usersArray;
   console.log("Lista de id:", userList);
  
- 
-  const usernameList = usersArray[0].usernamesArray;
+   const usernameList = usersArray[0].usernamesArray;
   console.log("Lista de nombres:", usernameList);
  
  
@@ -351,7 +345,6 @@ usersArray[0].usernamesArray.forEach((username) => {
  console.log("scores: ", userScores)
   });
  
-
 });
 
 // Crear una función para generar un código alfanumérico corto
@@ -367,7 +360,6 @@ for (let i = 0; i < 4; i++) {
 
   return codigo;
 }
-
 
 httpServer.listen(5000, ()=>
   console.log(`Server listening at http://localhost:5000`)

@@ -1,8 +1,8 @@
 [
     {
-      "modalitat": "paises",
+      "modalidad": "paises",
       "pregunta": "¿Cuál es la capital de Estados Unidos?",
-      "respostes": {
+      "respuestaGame": {
         "a": "Washington, D.C.",
         "b": "Nueva York",
         "c": "Los Ángeles",
@@ -11,9 +11,9 @@
       "correcta": "Washington, D.C."
     },
     {
-      "modalitat": "paises",
+      "modalidad": "paises",
       "pregunta": "¿Cuál es la capital de Canadá?",
-      "respostes": {
+      "respuestaGame": {
         "a": "Toronto",
         "b": "Montreal",
         "c": "Vancouver",
@@ -22,9 +22,9 @@
       "correcta": "Ottawa"
     },
     {
-      "modalitat": "paises",
+      "modalidad": "paises",
       "pregunta": "¿Cuál es la capital de México?",
-      "respostes": {
+      "respuestaGame": {
         "a": "Ciudad de México",
         "b": "Monterrey",
         "c": "Guadalajara",
@@ -33,9 +33,9 @@
       "correcta": "Ciudad de México"
     },
     {
-      "modalitat": "paises",
+      "modalidad": "paises",
       "pregunta": "¿Cuál es la capital de Brasil?",
-      "respostes": {
+      "respuestaGame": {
         "a": "Recife",
         "b": "Brasilia",
         "c": "Río de Janeiro",
@@ -44,9 +44,9 @@
       "correcta": "Brasilia"
     },
     {
-      "modalitat": "paises",
+      "modalidad": "paises",
       "pregunta": "¿Cuál es la capital de Argentina?",
-      "respostes": {
+      "respuestaGame": {
         "a": "Rosario",
         "b": "Buenos Aires",
         "c": "Cordoba",
@@ -55,9 +55,9 @@
       "correcta": "Buenos Aires"
     },
     {
-      "modalitat": "paises",
+      "modalidad": "paises",
       "pregunta": "¿Cuál es la capital de Reino Unido?",
-      "respostes": {
+      "respuestaGame": {
         "a": "Manchester",
         "b": "Londres",
         "c": "Oxford",
@@ -66,9 +66,9 @@
       "correcta": "Londres"
     },
     {
-      "modalitat": "paises",
+      "modalidad": "paises",
       "pregunta": "¿Cuál es la capital de Francia?",
-      "respostes": {
+      "respuestaGame": {
         "a": "Paris",
         "b": "Marsella",
         "c": "Lyon",
@@ -77,9 +77,9 @@
       "correcta": "Paris"
     },
     {
-      "modalitat": "paises",
+      "modalidad": "paises",
       "pregunta": "¿Cuál es la capital de Alemania?",
-      "respostes": {
+      "respuestaGame": {
         "a": "Ámsterdam",
         "b": "Múnich",
         "c": "Berlín",
@@ -88,9 +88,9 @@
       "correcta": "Berlín"
     },
     {
-      "modalitat": "paises",
+      "modalidad": "paises",
       "pregunta": "¿Cuál es la capital de Italia?",
-      "respostes": {
+      "respuestaGame": {
         "a": "Barcelona",
         "b": "Nápoles",
         "c": "Roma",
@@ -99,9 +99,9 @@
       "correcta": "Roma"
     },
     {
-      "modalitat": "paises",
+      "modalidad": "paises",
       "pregunta": "¿Cuál es la capital de España?",
-      "respostes": {
+      "respuestaGame": {
         "a": "Madrid",
         "b": "Salou",
         "c": "Sevilla",
@@ -109,11 +109,65 @@
       },
       "correcta": "Madrid"
     },
-    
     {
-      "modalitat": "quimica",
+      "modalidad": "paises",
+      "pregunta": "¿Cuál es la capital de Australia?",
+      "respuestaGame": {
+      "a": "Melbourne",
+      "b": "Sídney",
+      "c": "Brisbane",
+      "d": "Canberra"
+      },
+      "correcta": "Canberra"
+      },
+      {
+      "modalidad": "paises",
+      "pregunta": "¿Cuál es la capital de China?",
+      "respuestaGame": {
+      "a": "Shanghai",
+      "b": "Pekín",
+      "c": "Hong Kong",
+      "d": "Guangzhou"
+      },
+      "correcta": "Pekín"
+      },
+      {
+      "modalidad": "paises",
+      "pregunta": "¿Cuál es la capital de Japón?",
+      "respuestaGame": {
+      "a": "Osaka",
+      "b": "Kioto",
+      "c": "Tokio",
+      "d": "Yokohama"
+      },
+      "correcta": "Tokio"
+      },
+      {
+      "modalidad": "paises",
+      "pregunta": "¿Cuál es la capital de India?",
+      "respuestaGame": {
+      "a": "Bombay",
+      "b": "Nueva Delhi",
+      "c": "Calcuta",
+      "d": "Bangalore"
+      },
+      "correcta": "Nueva Delhi"
+      },
+      {
+      "modalidad": "paises",
+      "pregunta": "¿Cuál es la capital de Rusia?",
+      "respuestaGame": {
+      "a": "Moscú",
+      "b": "San Petersburgo",
+      "c": "Novosibirsk",
+      "d": "Ekaterimburgo"
+      },
+      "correcta": "Moscú"
+      },
+      {
+      "modalidad": "quimica",
         "pregunta": "¿Cuál es el símbolo químico del oxígeno?",
-        "respostes": {
+        "respuestaGame": {
           "a": "O",
           "b": "Ox",
           "c": "Oxí",
@@ -121,9 +175,9 @@
         },
         "correcta": "O"},
       {
-        "modalitat": "quimica",
+        "modalidad": "quimica",
         "pregunta": "¿Cuántos elementos químicos hay en la tabla periódica?",
-        "respostes": {
+        "respuestaGame": {
           "a": "92",
           "b": "108",
           "c": "140",
@@ -132,9 +186,9 @@
         "correcta": "118"
       },
       {
-        "modalitat": "quimica",
+        "modalidad": "quimica",
         "pregunta": "¿Cuál es el gas más abundante en la atmósfera terrestre?",
-        "respostes": {
+        "respuestaGame": {
           "a": "Nitrógeno",
           "b": "Oxígeno",
           "c": "Argón",
@@ -143,9 +197,9 @@
         "correcta": "Nitrógeno"
       },
       {
-        "modalitat": "quimica",
+        "modalidad": "quimica",
         "pregunta": "¿Cuál de los siguientes elementos es un metal alcalino?",
-        "respostes": {
+        "respuestaGame": {
           "a": "Oxígeno",
           "b": "Hierro",
           "c": "Cloro",
@@ -154,9 +208,9 @@
         "correcta": "Potasio"
       },
       {
-        "modalitat": "quimica",
+        "modalidad": "quimica",
         "pregunta": "¿Qué número atómico tiene el carbono?",
-        "respostes": {
+        "respuestaGame": {
           "a": "8",
           "b": "4",
           "c": "6",
@@ -165,9 +219,9 @@
         "correcta": "6"
       },
       {
-        "modalitat": "quimica",
+        "modalidad": "quimica",
         "pregunta": "¿Cuál es el proceso químico de conversión de un sólido directamente a gas sin pasar por el estado líquido?",
-        "respostes": {
+        "respuestaGame": {
           "a": "Sublimación",
           "b": "Fusión",
           "c": "Vaporización",
@@ -176,9 +230,9 @@
         "correcta": "Solidificación"
       },
       {
-        "modalitat": "quimica",
+        "modalidad": "quimica",
         "pregunta": "¿Qué tipo de enlace químico comparten electrones entre átomos?",
-        "respostes": {
+        "respuestaGame": {
           "a": "Iónico",
           "b": "Van der Waals",
           "c": "Metálico",
@@ -187,9 +241,9 @@
         "correcta": "Covalente"
       },
       {
-        "modalitat": "quimica",
+        "modalidad": "quimica",
         "pregunta": "¿Cuál es el componente principal del ácido clorhídrico?",
-        "respostes": {
+        "respuestaGame": {
           "a": "Hidroxilo",
           "b": "Cloro",
           "c": "Hidroxilo",
@@ -198,9 +252,9 @@
         "correcta": "Hidrógeno"
       },
       {
-        "modalitat": "quimica",
+        "modalidad": "quimica",
         "pregunta": "¿Cuál es la fórmula quimica del agua?",
-        "respostes": {
+        "respuestaGame": {
           "a": "H2O2",
           "b": "CO2",
           "c": "CH4",
@@ -209,9 +263,9 @@
         "correcta": "H2O"
       },
       {
-        "modalitat": "quimica",
+        "modalidad": "quimica",
         "pregunta": "¿Cuál es el metal más ligero?",
-        "respostes": {
+        "respuestaGame": {
           "a": "Aluminio",
           "b": "Sodio",
           "c": "Litio",
@@ -219,11 +273,54 @@
         },
         "correcta": "Litio"
       },
-      
+      {
+        "modalidad": "quimica",
+        "pregunta": "¿Cuál es el símbolo químico del sodio?",
+        "respuestaGame": {
+        "a": "So",
+        "b": "Na",
+        "c": "Sd",
+        "d": "Sn"
+        },
+        "correcta": "Na"
+        },
         {
-          "modalitat": "astronomia",
+        "modalidad": "quimica",
+        "pregunta": "¿Cuántos protones tiene un átomo de carbono?",
+        "respuestaGame": {
+        "a": "4",
+        "b": "6",
+        "c": "8",
+        "d": "12"
+        },
+        "correcta": "6"
+        },
+        {
+        "modalidad": "quimica",
+        "pregunta": "¿Cuál es el compuesto químico principal en la cáscara de los huevos?",
+        "respuestaGame": {
+        "a": "Ácido sulfúrico",
+        "b": "Carbonato de calcio",
+        "c": "Nitrato de potasio",
+        "d": "Cloruro de sodio"
+        },
+        "correcta": "Carbonato de calcio"
+        },
+        {
+        "modalidad": "quimica",
+        "pregunta": "¿Qué gas es liberado durante la respiración celular?",
+        "respuestaGame": {
+        "a": "Dióxido de carbono",
+        "b": "Nitrógeno",
+        "c": "Oxígeno",
+        "d": "Hidrógeno"
+        },
+        "correcta": "Dióxido de carbono"
+        },
+        {
+          "modalidad": "astronomia",
           "pregunta": "¿Cuál es la estrella más cercana a la Tierra?",
-          "respostes": {
+          "respuestaGame": {
             "a": "Alfa Centauri",
             "b": "Sirio",
             "c": "Proxima Centauri",
@@ -232,9 +329,9 @@
           "correcta": "Proxima Centauri"
         },
         {
-          "modalitat": "astronomia",
+          "modalidad": "astronomia",
           "pregunta": "¿Cuál es la galaxia que contiene nuestro sistema solar?",
-          "respostes": {
+          "respuestaGame": {
             "a": "Triángulo",
             "b": "Andrómeda",
             "c": "Sombrero",
@@ -243,9 +340,9 @@
           "correcta": "Vía Láctea"
         },
         {
-          "modalitat": "astronomia",
+          "modalidad": "astronomia",
           "pregunta": "¿Cuál es la luna más grande de Júpiter?",
-          "respostes": {
+          "respuestaGame": {
             "a": "Ío",
             "b": "Calisto",
             "c": "Europa",
@@ -254,9 +351,9 @@
           "correcta": "Ganimedes"
         },
         {
-          "modalitat": "astronomia",
+          "modalidad": "astronomia",
           "pregunta": "¿Cuál es el nombre del telescopio espacial lanzado por la NASA en 1990?",
-          "respostes": {
+          "respuestaGame": {
             "a": "Kepler",
             "b": "Hubble",
             "c": "Càrpats",
@@ -265,9 +362,9 @@
           "correcta": "Hubble"
         },
         {
-          "modalitat": "astronomia",
+          "modalidad": "astronomia",
           "pregunta": "¿Qué tipo de eclipse ocurre cuando la Luna bloquea completamente la luz del Sol?",
-          "respostes": {
+          "respuestaGame": {
             "a": "Eclipse solar total",
             "b": "Eclipse lunar",
             "c": "Eclipse anular",
@@ -276,9 +373,9 @@
           "correcta": "Eclipse solar total"
         },
         {
-          "modalitat": "astronomia",
+          "modalidad": "astronomia",
           "pregunta": "¿Cuál es la distancia promedio entre la Tierra y el Sol?",
-          "respostes": {
+          "respuestaGame": {
             "a": "93 millones de millas",
             "b": "500,000 millas",
             "c": "1 billón de millas",
@@ -287,20 +384,20 @@
           "correcta": "93 millones de millas"
         },
         {
-          "modalitat": "astronomia",
+          "modalidad": "astronomia",
           "pregunta": "¿Qué es un agujero negro?",
-          "respostes": {
+          "respuestaGame": {
             "a": "Un agujero en el espacio-tiempo",
             "b": "Una estrella en explosión",
             "c": "Un planeta oscuro",
             "d": "Una supernova"
           },
-          "correcta": "Oceà Índic"
+          "correcta": "Un agujero en el espacio-tiempo"
         },
         {
-          "modalitat": "astronomia",
+          "modalidad": "astronomia",
           "pregunta": "¿Cuál es el planeta más grande de nuestro sistema solar?",
-          "respostes": {
+          "respuestaGame": {
             "a": "Mercurio",
             "b": "Venus",
             "c": "Júpiter",
@@ -309,9 +406,9 @@
           "correcta": "Júpiter"
         },
         {
-          "modalitat": "astronomia",
+          "modalidad": "astronomia",
           "pregunta": "¿Cuántas lunas tiene Marte?",
-          "respostes": {
+          "respuestaGame": {
             "a": "2",
             "b": "1",
             "c": "4",
@@ -320,16 +417,60 @@
           "correcta": "2"
         },
         {
-          "modalitat": "astronomia",
+          "modalidad": "astronomia",
           "pregunta": "¿Cuál es el nombre de la primera persona en caminar sobre la Luna?",
-          "respostes": {
+          "respuestaGame": {
             "a": "Neil Armstrong",
             "b": "Buzz Aldrin",
             "c": "Yuri Gagarin",
             "d": "Alan Shepard"
           },
           "correcta": "Neil Armstrong"
-        }
+        },
+        {
+          "modalidad": "astronomia",
+          "pregunta": "¿Cuál es el nombre del planeta conocido como 'el planeta rojo'?",
+          "respuestaGame": {
+          "a": "Venus",
+          "b": "Júpiter",
+          "c": "Marte",
+          "d": "Mercurio"
+          },
+          "correcta": "Marte"
+          },
+          {
+          "modalidad": "astronomia",
+          "pregunta": "¿Cuál es el nombre de la estrella más brillante en el cielo nocturno?",
+          "respuestaGame": {
+          "a": "Proxima Centauri",
+          "b": "Sirio",
+          "c": "Alfa Centauri",
+          "d": "Vega"
+          },
+          "correcta": "Sirio"
+          },
+          {
+          "modalidad": "astronomia",
+          "pregunta": "¿Cuál es el nombre de la misión espacial de la NASA que envió al primer hombre a la Luna?",
+          "respuestaGame": {
+          "a": "Misión Apollo 11",
+          "b": "Misión Mercury",
+          "c": "Misión Gemini",
+          "d": "Misión Apollo 13"
+          },
+          "correcta": "Misión Apollo 11"
+          },
+          {
+          "modalidad": "astronomia",
+          "pregunta": "¿Cuál es el nombre de la estrella más grande conocida hasta ahora?",
+          "respuestaGame": {
+          "a": "VY Canis Majoris",
+          "b": "Betelgeuse",
+          "c": "Antares",
+          "d": "Sirio"
+          },
+          "correcta": "VY Canis Majoris"
+          }
         ]
       
     

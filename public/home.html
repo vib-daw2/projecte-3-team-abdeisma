@@ -1,118 +1,161 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="img/icono.png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&display=swap">
-    <title>ORANGE GAME</title>
-    <style>
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-image: url("img/background.jpg");
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="img/icono.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&display=swap">
+  <title>ORANGE GAME</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url("img/background.jpg");
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #container {
+      text-align: center;
+      background-color: #f9f9f9;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+    }
+
+    #title {
+      font-family: "Chakra Petch", sans-serif;
+      font-size: 36px;
+      color: #ff7f00;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    #codiInput {
+          width: calc(100% - 100px);
+          padding: 12px;
+          font-size: 16px;
+          border: none;
+          border-radius: 20px;
+          margin-bottom: 20px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          transition: box-shadow 0.3s ease;
+          outline: none;
       }
 
-      #container {
-        text-align: center;
-        background-color: #f9f9f9;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        max-width: 400px;
+      #codiInput:focus {
+          box-shadow: 0 0 20px rgba(255, 127, 0, 0.5);
       }
 
-      #title {
-        font-family: "Chakra Petch", sans-serif;
-        font-size: 36px;
-        color: #ff7f00;
-        margin-bottom: 30px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-      }
+    #nickname {
+      color: orange;
+      font-weight: bold;
+    }
 
-      p {
-        font-size: 18px;
-        margin-bottom: 20px;
-        color: #555;
-        line-height: 1.5;
-      }
+    #entrarButton {
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #ff7f00;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      outline: none;
+    }
 
-      #codiInput {
-            width: calc(100% - 100px);
-            padding: 12px;
-            font-size: 16px;
-            border: none;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease;
-            outline: none;
-        }
+    #entrarButton:hover {
+      background-color: #ffad33;
+    }
 
-        #codiInput:focus {
-            box-shadow: 0 0 20px rgba(255, 127, 0, 0.5);
-        }
+    #createSection {
+      margin-top: 30px;
+      font-size: 16px;
+      color: #666;
+      line-height: 1.5;
+    }
 
-      #nickname {
-        color: orange;
-        font-weight: bold;
-      }
+    .orange-link {
+      color: #ff7f00;
+      cursor: pointer;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
 
-      #entrarButton {
-        padding: 12px 20px;
-        font-size: 16px;
-        background-color: #ff7f00;
-        color: #fff;
-        border: none;
-        border-radius: 20px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        outline: none;
-      }
+    .orange-link:hover {
+      color: #ffad33;
+    }
 
-      #entrarButton:hover {
-        background-color: #ffad33;
-      }
+    /* Estilos para el mensaje de error */
+    #error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1 id="title">VAMOS ALLÁ</h1>
+    <p>Bienvenido a ORANGE GAME, <span id="nickname"></span>!</p>
+    <p>Introduce el código</p>
+    <input id="codiInput" type="text" placeholder="Código de la partida">
+    <button id="entrarButton">Entrar</button>
+    <!-- Elemento para mostrar el mensaje de error -->
+    <div id="error-message"></div>
 
-      #createSection {
-        margin-top: 30px;
-        font-size: 16px;
-        color: #666;
-        line-height: 1.5;
-      }
-
-      .orange-link {
-        color: #ff7f00;
-        cursor: pointer;
-        text-decoration: underline;
-        transition: color 0.3s ease;
-      }
-
-      .orange-link:hover {
-        color: #ffad33;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="container">
-      <h1 id="title">VAMOS ALLÁ</h1>
-      <p>Bienvenido a Orange Game, <span id="nickname"></span>!</p>
-      <p>Entra el Codi</p>
-      <input id="codiInput" type="text" placeholder="Codi de la partida">
-      <button id="entrarButton">Entrar</button>
-
-      <div id="createSection">
-        <p>¿Quieres crear una partida en <span class="orange-link" onclick="window.location.href='admin.html';">Orange Game</span>?</p>
-      </div>
+    <div id="createSection">
+      <p>¿Quieres crear una partida en <span class="orange-link" onclick="window.location.href='admin.html';">Orange Game</span>?</p>
     </div>
+  </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.min.js"></script>
-    <script src="main.js"></script>
-  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.min.js"></script>
+  <script src="main.js"></script>
+  <script>
+    // Obtener referencia al botón de entrar y al input del código
+    var entrarButton = document.getElementById('entrarButton');
+    var codiInput = document.getElementById('codiInput');
+    // Obtener referencia al elemento del mensaje de error
+    var errorMessage = document.getElementById('error-message');
+  
+    // Obtener el nickname guardado en el main (reemplaza 'nicknameGuardado' con el valor real)
+    var nicknameGuardado = obtenerNicknameDesdeMain();
+  
+    // Mostrar el nickname guardado en el elemento correspondiente
+    var nicknameElement = document.getElementById('nickname');
+    nicknameElement.textContent = nicknameUser;
+  
+    // Agregar un event listener al botón de entrar
+    entrarButton.addEventListener('click', function() {
+      // Verificar si el campo de código está vacío
+      if (codiInput.value === '') {
+        // Mostrar mensaje de error
+        errorMessage.textContent = 'Por favor, introduce un código de partida.';
+      } else {
+        // Limpiar el mensaje de error si el campo de código no está vacío
+        errorMessage.textContent = '';
+        // Aquí iría el código para entrar a la partida
+      }
+    });
+  
+    // Esta función simula la obtención del nickname desde el main
+    function obtenerNicknameDesdeMain() {
+      // Aquí puedes obtener el nickname desde donde lo guardaste en el main
+      return "nicknameUser"; // Esto es un ejemplo, reemplaza con tu lógica real
+    }
+  </script>
+  
+</body>
 </html>

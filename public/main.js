@@ -573,15 +573,15 @@ function mostrarPodioYRanking() {
     preguntaElem.textContent = pregunta.pregunta;
 
     // Introducd el contenido de las respuestas a los elementos respuestax
-    const respA = document.getElementById("respuesta-a");
-    const respB = document.getElementById("respuesta-b");
-    const respC = document.getElementById("respuesta-c");
-    const respD = document.getElementById("respuesta-d");
+    const respA = document.getElementById("answer-a");
+    const respB = document.getElementById("answer-b");
+    const respC = document.getElementById("answer-c");
+    const respD = document.getElementById("answer-d");
   
-    respA.textContent = pregunta.respostes['a'];
-    respB.textContent = pregunta.respostes['b'];
-    respC.textContent = pregunta.respostes['c'];
-    respD.textContent = pregunta.respostes['d'];
+    respA.textContent = pregunta.respuestaGame['a'];
+    respB.textContent = pregunta.respuestaGame['b'];
+    respC.textContent = pregunta.respuestaGame['c'];
+    respD.textContent = pregunta.respuestaGame['d'];
   }
 
   // Función que comienza la cuenta atrás del tiempo para responder cada pregunta

@@ -88,27 +88,31 @@
             background-color: #ccc;
             cursor: not-allowed;
         }
-        
-      #boton-atras {
-        margin-bottom: 40%;
-      }
-      #go-back {
-        background-color: #ffad33;
-        color: white;
-        padding: 15px 20px;
-        font-size: 18px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
 
-      #go-back:hover {
-        background-color: #ff7f00;
-      }
+     /* Estilos para el botón de volver */
+    #go-back {
+      position: absolute;
+      top: 22%;
+      left: 30%;
+      background-color: #ffad33;
+      color: white;
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #go-back:hover {
+      background-color: #ff7f00;
+    }
     </style>
   </head>
   <body>
+
+    <button id="go-back" onclick="window.history.back()">Volver</button>
+
     <div id="gameForm">
       <h2>Nueva Partida</h2>
       <form id="adminForm">

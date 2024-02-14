@@ -7,116 +7,121 @@
    <link rel="icon" type="image/x-icon" href="img/icono.png">
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
    <style>
-  body {
-           margin: 0;
-           padding: 0;
-           background-color: #f4f4f4;
-           background-image: url("img/lobby.jpg");
-           background-repeat: no-repeat;
-           background-size: cover;
-           font-family: 'Chakra Petch', sans-serif;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           min-height: 100vh;
-       }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Chakra Petch', sans-serif;
+        background-image: url("img/lobby.jpg");
+    }
 
-       #lobby-container {
-           max-width: 600px;
-           width: 80%;
-           padding: 40px;
-           border-radius: 20px;
-           box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-           background-color: rgba(255, 255, 255, 0.9);
-           text-align: center;
-           transition: transform 0.3s ease, box-shadow 0.3s ease;
-           margin-right: 5%;
-       }
+    #lobby-container {
+        max-width: 600px;
+        width: 80%;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        background: rgba(255, 255, 255, 0.9);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin: 50px auto;
+    }
 
-       #lobby-container:hover {
-           transform: scale(1.02);
-           box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-       }
+    #lobby-container:hover {
+        transform: scale(1.02);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    }
 
-       #titleLobby {
-           margin-bottom: 30px;
-           color: #ff7f00;
-           text-transform: uppercase;
-           font-weight: bold;
-           font-size: 32px;
-           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-       }
+    #titleLobby {
+        margin-bottom: 30px;
+        color: #ff7f00;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 32px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
 
-       #url-container {
-           margin-bottom: 30px;
-           display: flex;
-           align-items: center;
-           justify-content: center;
-       }
+    #url-container {
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-       #copy-button, #start-button {
-           cursor: pointer;
-           background-color: #ff7f00;
-           color: white;
-           border: none;
-           border-radius: 8px;
-           padding: 6px 16px;
-           font-size: 20px;
-           transition: background-color 0.3s ease;
-       }
+    #copy-button, #start-button {
+        cursor: pointer;
+        background-color: #ff7f00;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-size: 20px;
+        transition: background-color 0.3s ease;
+        margin: 0 10px;
+    }
 
-       #copy-button:hover, #start-button:hover {
-           background-color: #e74c3c;
-       }
+    #copy-button:hover, #start-button:hover {
+        background-color: #e74c3c;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-       #listaUsuarios {
-           margin-top: 70px; 
-           margin-bottom: 70px; 
-           border-radius: 20px;
-           box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-           background-color: rgba(255, 255, 255, 0.9);
-           padding: 40px;
-           transition: transform 0.3s ease, box-shadow 0.3s ease, margin 0.3s ease;
-       }
+    #copy-button:active, #start-button:active {
+        transform: translateY(1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-       #listaUsuarios:hover {
-           transform: translateY(-5px);
-           box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
-           margin-bottom: 65px; 
-       }
+    #listaUsuarios {
+        margin-top: 50px;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        background: rgba(255, 255, 255, 0.9);
+        padding: 40px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin: 50px auto;
+        max-width: 600px;
+    }
 
-       #listaUsuarios h2 {
-           color: #ff7f00;
-           margin-bottom: 20px;
-           text-transform: uppercase;
-           font-size: 28px;
-           font-weight: bold;
-           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-       }
+    #listaUsuarios:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    }
 
-       #user-list {
-           list-style-type: none;
-           padding: 0;
-           margin: 0;
-       }
+    #listaUsuarios h2 {
+        color: #ff7f00;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        font-size: 28px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
 
-       #user-list li {
-           padding: 20px 0;
-           border-bottom: 1px solid #ccc;
-           color: #666;
-           font-size: 18px;
-           transition: background-color 0.3s ease;
-           cursor: pointer;
-           display: flex;
-           align-items: center;
-       }
+    #user-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
 
-       #user-list li:last-child {
-           border-bottom: none;
-       }
+    #user-list li {
+        padding: 20px 0;
+        border-bottom: 1px solid #ccc;
+        color: #666;
+        font-size: 18px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
 
-   </style>
-  
+    #user-list li:last-child {
+        border-bottom: none;
+    }
+
+    .advice {
+        color: #333;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+</style>
 </head>
 <body>
 
@@ -124,13 +129,9 @@
         <h1 id="titleLobby"></h1>
         <div id="url-container" class="input-group">
             <label for="url" class="input-group-prepend">Codigo de la Partida: </label>
-            <input type="text" id="url" value="" readonly class="form-control">
+            <input type="text" id="url" value="" readonly class="form-control" style="margin-right: 10px; margin-left: 10px;">
             <div class="input-group-append">
-                <button id="copy-button" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                        height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z" />
-                    </svg></button>
+                <button id="copy-button" class="btn btn-success">¡Copiar!</button>
             </div>
         </div>
         <p class="advice">No recargues la página mientras juegas animal</p>
@@ -143,21 +144,23 @@
     </div>
 </body>
 
-
    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 
    <script>
        // Logica para los botones
        document.getElementById("copy-button").addEventListener("click", function() {
-           //copiar URL al portfoli
+           //copiar URL al portafolio
            const urlInput = document.getElementById("url");
            urlInput.select();
            document.execCommand("copy");
+           // Cambiar el texto del botón temporalmente
+           document.getElementById("copy-button").innerText = "¡Copiado!";
+           // Después de 2 segundos, volver al texto original
+           setTimeout(function() {
+               document.getElementById("copy-button").innerText = "¡Copiar!";
+           }, 2000);
        });
-
 
        // Asigna la URL de la partida al input
        const params = new URLSearchParams(window.location.search);
@@ -165,7 +168,6 @@
        const urlInput = document.getElementById("url");
        urlInput.value = partidaId;
    </script>
-           <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.min.js"></script>
-           <script src="main.js"></script>
-</body>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.min.js"></script>
+   <script src="main.js"></script>
 </html>
